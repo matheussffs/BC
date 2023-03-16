@@ -8,6 +8,9 @@ create table pessoa(
 );
 
 select * from pessoa;
+select * from pessoa where idade > 20;
+select * from pessoa where altura > 1.80;
+update pessoa set profissao = 'Desempregado' where profissao = 'Advogado';
 
 insert into pessoa (cod_pessoa, nome, telefone, altura, idade, profissao)
 values (1, 'Ana Silva', '(11) 99999-1111', 1.70, 25, 'Engenheiro de Software'),
@@ -41,6 +44,9 @@ create table carro(
 );
 
 select * from carro;
+select * from carro where potencia > 100;
+select * from carro where ano > 2000;
+update carro set potencia = '1500' where potencia = '201';
 
 insert into carro (cod_carro, marca, modelo, ano, chassi, potencia)
 values (1, 'Audi', 'A4', 2021, 'WBA8D9C50JZ968746', 201),
@@ -75,6 +81,12 @@ create table times(
 
 select * from times;
 
+update times set qtde_titulos = '10' where qtde_titulos = '31';
+select nome from times where cidade  = 'São Paulo'; 
+select nome from times where qtde_titulos = 0;
+select nome from times where divisao = 1;
+select nome from times where qtde_titulos >10;
+
 insert into times (cod_times, nome, cidade, ano_fundacao, qtde_titulos, divisao)
 values (1, 'Barcelona', 'Barcelona', 1899, 96, 1),
 		(2, 'Real Madrid', 'Madrid', 1902, 93, 1),
@@ -107,6 +119,13 @@ create table cantores(
 );
 
 select * from cantores;
+delete from cantores where valor_show = 1000;
+update cantores set valor_show = '1000' where valor_show = '14000000';
+select nome from cantores where valor_show > 10000000;
+select nome from cantores where idade > 30;
+select nome from cantores where genero_musical = 'Hip Hop';
+select nome from cantores where idade > 40;
+
 
 insert into cantores (cod_cantor, nome, idade, genero_musical, qtde_musicas, valor_show)
 values(1, 'Beyoncé', 40, 'R&B', 186, 10000000),
@@ -134,24 +153,28 @@ create table encomendas(
 	cod_encomenda integer primary key,
 	destinatario varchar(70),
 	remetente varchar(70),
-	peso integer,
+	peso numeric,
 	tamanho varchar(7)
 );
 
 select * from encomendas;
+update encomendas set remetente = 'Gustavo' where remetente = 'Ana Clara';
+select cod_encomenda from encomendas where peso > 1;
+select cod_encomenda from encomendas where destinatario like '%s';
+
 insert into encomendas (cod_encomenda, destinatario, remetente, peso, tamanho)
-values (1, 'Ana Silva', 'João Pereira', 1, 'pequeno'),
+values (1, 'Ana Silva', 'João Pereira', 0.5, 'pequeno'),
 		(2, 'João Pereira', 'Maria Souza', 2, 'médio'),
 		(3, 'Maria Souza', 'Ana Clara', 3, 'grande'),
 		(4, 'Daniela Costa', 'Rafael Santos', 4, 'pequeno'),
 		(5, 'Ana Paula', 'José Silva', 1, 'pequeno'),
-		(6, 'Juliana Santos', 'Gustavo Oliveira', 1, 'pequeno'),
+		(6, 'Juliana Santos', 'Gustavo Oliveira', 0.7, 'pequeno'),
 		(7, 'Maria Ferreira', 'Ricardo Almeida', 11, 'grande'),
 		(8, 'Carla Santos', 'André Souza', 2, 'médio'),
 		(9, 'Fernanda Lima', 'Thiago Oliveira', 12, 'grande'),
 		(10, 'Thiago Oliveira', ' Lucas Ferreira', 4, 'pequeno'),
 		(11, 'Mariana Oliveira', 'Felipe Santos', 6, 'médio'),
-		(12, 'Ana Paula Ferreira', 'Pedro Souza', 2, 'pequeno'),
+		(12, 'Ana Paula Ferreira', 'Pedro Souza', 0.8, 'pequeno'),
 		(13, 'Cleiton Rasta', 'Cabeça de Gelo', 1, 'pequeno'),
 		(14, 'Neymar', 'Jorginho', 5, 'médio'),
 		(15, 'Khvicha Kvaratskhelia', 'Haaland', 15, 'grande'), 
@@ -163,35 +186,39 @@ values (1, 'Ana Silva', 'João Pereira', 1, 'pequeno'),
 		
 create table refeicao(
 	cod_refeicao integer primary key,
-	nome varchar(50),
-	preco integer,
-	calorias integer,
+	nome varchar(100),
+	preco numeric,
+	calorias integer
 );
 
 select * from refeicao;
+update refeicaO set preco = '10.589' where preco = '15';
+select nome from refeicao where calorias > 500;
+select nome from refeicao where preco < 20;
+select nome from refeicao where calorias > 600;
+select nome from refeicao where nome like '%a';
 
 insert into refeicao(cod_refeicao, nome, preco, calorias)
-values(1,Arroz, Feijão, Frango Grelhado,R$ 15,00,500 kcal
-		(2,Arroz, Feijão, Bife à Milanesa,R$ 17,00,600 kcal
-		(3,Arroz Integral, Lentilha, Carne de Soja,R$ 14,00,400 kcal
-		(4,Macarrão com Molho de Tomate, Frango Desfiado,R$ 16,00,450 kcal
-		(5,Salada Verde, Batata Doce Assada, Peito de Peru,R$ 18,00,300 kcal
-		(6,Feijoada, Couve, Arroz Branco,R$ 22,00,700 kcal
-		(7,Strogonoff de Carne, Arroz, Batata Palha,R$ 20,00,550 kcal
-		(8,Salmão Grelhado, Purê de Mandioquinha, Legumes no Vapor,R$ 28,00,450 kcal
-		(9,Arroz com Brócolis, Frango ao Molho Branco,R$ 19,00,500 kcal
-		(10,Sopa de Legumes, Pão Integral,R$ 12,00,250 kcal
-		(11,Lasanha de Legumes, Salada Mista,R$ 21,00,400 kcal
-		(12,Frango Xadrez, Arroz, Legumes Refogados,R$ 18,00,550 kcal
-		(13,Estrogonofe de Frango, Batata Palha, Arroz,R$ 19,00,500 kcal
-		(14,Feijão Branco, Carne de Panela, Arroz Integral,R$ 16,00,450 kcal
-		(15,Quibe Assado, Tabule, Coalhada Seca,R$ 17,00,350 kcal
-		(16,Peixe Assado, Arroz, Salada de Rúcula com Tomate Seco,R$ 24,00,400 kcal
-		(17,Arroz com Lentilha, Bife Grelhado, Salada Verde,R$ 18,00,500 kcal
-		(18,Torta de Frango, Salada Mista,R$ 16,00,400 kcal
-		(19,Ensopado de Carne, Arroz Branco, Farofa,R$ 22,00,600 kcal
-		(20,Arroz Integral, Feijão, Omelete de Legumes,R$ 15,00,350 kcal)
-
+values(1,'Arroz, Feijão, Frango Grelhado', 15,500),
+		(2,'Arroz, Feijão, Bife à Milanesa',17,600),
+		(3,'Arroz Integral, Lentilha, Carne de Soja',14,400),
+		(4,'Macarrão com Molho de Tomate, Frango Desfiado',16,450),
+		(5,'Salada Verde, Batata Doce Assada, Peito de Peru',18,300),
+		(6,'Feijoada, Couve, Arroz Branco',22,700),
+		(7,'Strogonoff de Carne, Arroz, Batata Palha',20,550),
+		(8,'Salmão Grelhado, Purê de Mandioquinha, Legumes no Vapor',28,450),
+		(9,'Arroz com Brócolis, Frango ao Molho Branco',19,500),
+		(10,'Sopa de Legumes, Pão Integral',12,250),
+		(11,'Lasanha de Legumes, Salada Mista',21,400),
+		(12,'Frango Xadrez, Arroz, Legumes Refogados',18,550),
+		(13,'Estrogonofe de Frango, Batata Palha, Arroz',19,500),
+		(14,'Feijão Branco, Carne de Panela, Arroz Integral',16,450),
+		(15,'Quibe Assado, Tabule, Coalhada Seca',17,350),
+		(16,'Peixe Assado, Arroz, Salada de Rúcula com Tomate Seco',24,400),
+		(17,'Arroz com Lentilha, Bife Grelhado, Salada Verde',18,500),
+		(18,'Torta de Frango, Salada Mista',16,400),
+		(19,'Ensopado de Carne, Arroz Branco, Farofa',22,600),
+		(20,'Arroz Integral, Feijão, Omelete de Legumes',15,350);
 
 
 
